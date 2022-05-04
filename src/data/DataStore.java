@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import data.Tool;
 import data.ToolType;
+import holiday.Holiday;
+import holiday.IndependenceDay;
+import holiday.LaborDay;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -19,12 +22,14 @@ public class DataStore {
     private static final String toolTypePath = "src/toolTypeConfig.json";
     private static List<Tool> tools;
     private static List<ToolType> toolTypes;
+    private final static List<Holiday> holidays = new ArrayList<>();
 
     public static void initialize(){
         try {
             Gson gson = new Gson();
             loadTools(gson);
             loadToolsTypes(gson);
+            addHolidays();
         } catch (IOException e) {
             System.out.println("There was an error accessing the config file");
         }
@@ -42,6 +47,11 @@ public class DataStore {
         toolTypes = gson.fromJson(content, type);
     }
 
+    private static void addHolidays(){
+        holidays.add(new LaborDay());
+        holidays.add(new IndependenceDay());
+    }
+
     public static Tool findTool(String toolCode){
         return tools.stream()
                 .filter(tool -> tool.getToolCode().equals(toolCode))
@@ -55,4 +65,10 @@ public class DataStore {
                 .findFirst()
                 .orElse(null);
     }
+
+    public static List<Holiday> getHolidays(){
+        return holidays;
+    }
+
+
 }
