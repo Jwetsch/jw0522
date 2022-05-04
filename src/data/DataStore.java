@@ -2,8 +2,6 @@ package data;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import data.Tool;
-import data.ToolType;
 import holiday.Holiday;
 import holiday.IndependenceDay;
 import holiday.LaborDay;

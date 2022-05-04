@@ -1,6 +1,7 @@
 package data;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class ToolType {
 
@@ -53,5 +54,18 @@ public class ToolType {
     public ToolType setHolidayCharge(boolean holidayCharge) {
         this.holidayCharge = holidayCharge;
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ToolType toolType1 = (ToolType) o;
+        return toolType.equals(toolType1.toolType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(toolType);
     }
 }

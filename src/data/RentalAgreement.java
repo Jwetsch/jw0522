@@ -19,7 +19,7 @@ public class RentalAgreement extends Response{
     private Integer discount;
     private BigDecimal discountAmount;
     private BigDecimal finalCharge;
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
     public String getToolCode() {
         return toolCode;

@@ -1,5 +1,7 @@
 package data;
 
+import java.util.Objects;
+
 public class Tool {
 
     private String toolCode;
@@ -33,5 +35,16 @@ public class Tool {
         return this;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Tool tool = (Tool) o;
+        return toolCode.equals(tool.toolCode);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(toolCode);
+    }
 }
