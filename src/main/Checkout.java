@@ -52,12 +52,12 @@ public class Checkout {
     }
 
     private static void validate(Request r, List<String> errorAccumulator) {
-        if(r.getDayCount()<1){
+        if(DataStore.findTool(r.getToolCode()) == null)
+            errorAccumulator.add("You have entered an invalid tool code");
+        if(r.getDayCount()<1)
             errorAccumulator.add("You must rent the tool for a minimum of one day");
-        }
-        if (r.getDiscount() < 0 || r.getDiscount() > 100) {
+        if (r.getDiscount() < 0 || r.getDiscount() > 100)
             errorAccumulator.add("Discount must be between 0% and 100%");
-        }
     }
 
     private static List<LocalDate> getDateList(Request r) {
