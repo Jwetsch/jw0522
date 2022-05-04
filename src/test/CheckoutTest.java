@@ -52,8 +52,8 @@ class CheckoutTest {
     }
 
     @Test
-    void checkOut_Test2_ExpectSuccess_269Charge() {
-        BigDecimal expectedCharge = new BigDecimal("2.69");
+    void checkOut_Test2_ExpectSuccess_358Charge() {
+        BigDecimal expectedCharge = new BigDecimal("3.58");
         Checkout.Request test2 = new Checkout.Request() {
             @Override
             public String getToolCode() {
