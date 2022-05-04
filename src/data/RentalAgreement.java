@@ -3,6 +3,7 @@ package data;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class RentalAgreement extends Response{
 
@@ -18,6 +19,7 @@ public class RentalAgreement extends Response{
     private Integer discount;
     private BigDecimal discountAmount;
     private BigDecimal finalCharge;
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
 
     public String getToolCode() {
         return toolCode;
@@ -146,8 +148,8 @@ public class RentalAgreement extends Response{
                         toolType,
                         toolBrand,
                         rentalDays,
-                        checkOut,
-                        dueDate,
+                        formatter.format(checkOut),
+                        formatter.format(dueDate),
                         new DecimalFormat("#0.##").format(dailyCharge),
                         chargeDays,
                         new DecimalFormat("#0.##").format(preDiscountCharge),
